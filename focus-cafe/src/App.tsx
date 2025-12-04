@@ -21,9 +21,10 @@ import focusLogo from "./assets/focus_logo.png";
 
 /* ----- Hook para animar cuando el bloque entra al viewport ----- */
 type InViewReturn = {
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement | null>;
   isVisible: boolean;
 };
+
 
 function useInViewAnimation(): InViewReturn {
   const ref = useRef<HTMLDivElement>(null);
