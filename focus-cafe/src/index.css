@@ -206,138 +206,185 @@ body {
 }
 
 /* HERO */
+
 .hero {
-  padding-top: 3.4rem;
+  padding: 0;
 }
-.hero-grid {
+
+.hero-brew {
+  background: linear-gradient(135deg, #f5e89b 0%, #e3d26a 35%, #f0e39f 100%);
+  color: var(--accent-black);
+}
+
+.hero-brew-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4.5rem 1.6rem 3.5rem;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: 2.6rem;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 3rem;
   align-items: center;
 }
-.hero-tag {
+
+/* LADO IZQUIERDO */
+
+.hero-brew-left {
+  max-width: 30rem;
+}
+
+.hero-brew-kicker {
+  margin-bottom: 0.9rem;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--green-dark);
   font-weight: 600;
-  margin-bottom: 0.9rem;
 }
-.hero-title {
+
+.hero-brew-title {
   font-family: "EricaOne", system-ui;
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-size: clamp(2.3rem, 4vw, 3.1rem);
   line-height: 1.05;
   text-transform: uppercase;
-  margin-bottom: 0.7rem;
-}
-.hero-highlight {
-  display: inline-block;
-  background: var(--green-main);
-  padding: 0.1em 0.28em;
-  border-radius: 0.24em;
-  box-shadow: 0 5px 0 var(--green-dark);
-}
-.hero-subtitle {
-  font-family: "Baloo 2", system-ui;
-  font-size: 1.05rem;
-  margin-bottom: 1.3rem;
-}
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.3rem;
-}
-.badge {
-  background: #fffdf4;
-  border-radius: 999px;
-  padding: 0.35rem 0.9rem;
-  border: 2px solid var(--green-main);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
   margin-bottom: 1.1rem;
 }
-.btn-primary,
-.btn-secondary {
-  border-radius: 999px;
-  padding: 0.7rem 1.6rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+
+.hero-brew-title span {
+  display: block;
+}
+
+.hero-brew-copy {
+  font-size: 0.98rem;
+  max-width: 26rem;
+}
+
+.hero-brew-button {
+  margin-top: 2.1rem;
   border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.6rem;
+  background: var(--accent-black);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-}
-.btn-primary {
-  background: var(--accent-black);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
-}
-.btn-secondary {
-  background: #fffdf4;
-  color: var(--accent-black);
-  border: 2px dashed var(--green-dark);
-}
-.btn-secondary:hover {
-  background: var(--green-main);
-}
-.hero-note {
-  font-size: 0.82rem;
-  color: #555;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
-/* HERO visual */
-.hero-card {
-  background: linear-gradient(135deg, var(--green-main), #c3e46b);
-  border-radius: var(--radius-big);
-  padding: 1.5rem 1.4rem;
-  box-shadow: var(--shadow-soft);
+.hero-brew-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* LADO DERECHO */
+
+.hero-brew-right {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-brew-product {
   position: relative;
-  overflow: hidden;
-}
-.hero-card-header h2 {
-  font-family: "Luckiest Guy";
-  font-size: 1.4rem;
-  text-transform: uppercase;
-}
-.hero-card-header p {
-  font-size: 0.9rem;
-}
-.hero-card-body {
-  margin-top: 0.9rem;
-}
-.hero-card-body ul {
-  list-style: none;
-  display: grid;
-  gap: 0.25rem;
-  font-size: 0.9rem;
-}
-.hero-character-placeholder {
-  position: absolute;
-  right: 0.8rem;
-  bottom: 0.7rem;
-  width: 80px;
-  height: 80px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  background: #d4f04a;
+  border-radius: 32px;
+  border: 3px solid #111111;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  overflow: hidden;
 }
+
+.hero-brew-product-main {
+  width: 80%; 
+  height: auto;
+  object-fit: contain;
+  transform: translateY(4%);
+}
+
+/* etiqueta arriba tipo “make tea awesome” */
+
+.hero-brew-product-tag {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+
+
+.hero-brew-product-character {
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  width: 115px;
+  height: 115px;
+  border-radius: 28px;
+  background: #f7f3cf;
+  border: 3px solid #111111;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(10px);
+  transition: transform 0.2s ease;
+}
+
+.hero-brew-product-character img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+/* pequeño hover para dar vida */
+.hero-brew-product:hover .hero-brew-product-character {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero-brew-inner {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 3.6rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-brew-right {
+    order: -1;
+  }
+
+  .hero-brew-product {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-brew-inner {
+    padding-inline: 1.2rem;
+  }
+
+  .hero-brew-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+
 
 /* encabezados de sección */
 .section-header {

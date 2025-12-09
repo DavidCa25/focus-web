@@ -18,13 +18,11 @@ import teteraVerde from "./assets/tetera_verde.png";
 import focus from "./assets/Focus.jpeg";
 import focusLogo from "./assets/focus_logo.png";
 
-
 /* ----- Hook para animar cuando el bloque entra al viewport ----- */
 type InViewReturn = {
   ref: React.RefObject<HTMLDivElement | null>;
   isVisible: boolean;
 };
-
 
 function useInViewAnimation(): InViewReturn {
   const ref = useRef<HTMLDivElement>(null);
@@ -170,62 +168,50 @@ const HeroSection: React.FC = () => {
   const { ref, isVisible } = useInViewAnimation();
 
   return (
-    <section id="inicio" className="section hero">
-      <div className="section-inner hero-grid" ref={ref}>
-        <div className={`hero-text fade-up ${isVisible ? "is-visible" : ""}`}>
-          <div className="hero-tag">Otra forma de disfrutar el café</div>
-          <h1 className="hero-title">
-            Focus Café
-            <span className="hero-highlight">
-              {" "}
-              desayunos y café de especialidad
-            </span>
+    <section id="inicio" className="hero hero-brew">
+      <div
+        ref={ref}
+        className={`hero-brew-inner fade-up ${isVisible ? "is-visible" : ""}`}
+      >
+        {/* LADO IZQUIERDO: TEXTO */}
+        <div className="hero-brew-left">
+          <p className="hero-brew-kicker">Café de especialidad en León</p>
+
+          <h1 className="hero-brew-title">
+            <span>Así empiezan</span>
+            <span>las mañanas</span>
+            <span>en Focus Café.</span>
           </h1>
-          <p className="hero-subtitle">
-            Croissants, waffles, sandwiches y café de fincas de Veracruz y
-            Puebla. Un espacio pensado para que tu mañana tenga su propio
-            ritual.
+
+          <p className="hero-brew-copy">
+            Café de fincas mexicanas, desayunos preparados al momento y un
+            espacio diseñado para que quieras volver mañana.
           </p>
-          <div className="hero-badges">
-            <span className="badge">Sabroso</span>
-            <span className="badge">Café de especialidad</span>
-            <span className="badge">Ambiente de barrio</span>
-          </div>
-          <div className="hero-actions">
-            <a href="#menu" className="btn-primary">
-              Ver menú
-            </a>
-            <a href="#experiencia" className="btn-secondary">
-              Ver experiencia en el local
-            </a>
-          </div>
-          <p className="hero-note">
-            Calzada Tepeyac 401 Local A · Colonia León Moderno · León,
-            Guanajuato
-          </p>
+
+          <button
+            className="hero-brew-button"
+            onClick={() => {
+              const el = document.getElementById("menu");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
+            Ver menú
+          </button>
         </div>
 
-        <div
-          className={`hero-visual fade-up ${isVisible ? "is-visible" : ""}`}
-        >
-          <div className="hero-card hero-card-focus">
-            <div className="hero-card-header">
-              <h2>Primera parada del día</h2>
-              <p>Un café claro, un desayuno sencillo y personajes que recuerdas.</p>
-            </div>
-            <div className="hero-card-body">
-              <ul>
-                <li>Café de especialidad de Veracruz y Puebla</li>
-                <li>Desayunos completos y pan dulce</li>
-                <li>Espacio cómodo para trabajar o estudiar</li>
-                <li>Identidad visual presente en todo el lugar</li>
-              </ul>
-            </div>
-            <div className="hero-character-placeholder hero-character-img">
-              <img
-                src={cupVerde}
-                alt="Personaje taza Focus Café"
-              />
+        {/* LADO DERECHO: PRODUCTO / MARCA */}
+        <div className="hero-brew-right">
+          <div className="hero-brew-product">
+            <img
+              src={focusLogo}
+              alt="Tarjeta de marca Focus Café"
+              className="hero-brew-product-main"
+            />
+
+            <div className="hero-brew-product-tag">Focus Café</div>
+
+            <div className="hero-brew-product-character">
+              <img src={cupNegra} alt="Personaje taza Focus Café" />
             </div>
           </div>
         </div>
@@ -238,18 +224,17 @@ const HeroSection: React.FC = () => {
 
 const HeroMarquee: React.FC = () => {
   const marqueeItems = [
-    "CAFÉ Y DESAYUNOS",
-    "DE TODOS LOS DÍAS",
-    "FOCUS CAFÉ",
     "CAFÉ DE ESPECIALIDAD",
+    "DESAYUNOS TODO EL DÍA",
+    "FOCUS CAFÉ",
+    "PAN RECIÉN HORNEADO",
     "AMBIENTE DE BARRIO",
-    "DESAYUNOS TODO EL DÍA"
+    "PARA LLEVAR O QUEDARSE"
   ];
 
   return (
     <section className="marquee-strip">
       <div className="marquee-inner">
-        {/* Duplicamos para loop infinito perfecto */}
         {[...marqueeItems, ...marqueeItems].map((item, index) => (
           <span key={index}>{item}</span>
         ))}
@@ -282,12 +267,11 @@ const MenuPreviewSection: React.FC = () => {
         ref={ref}
       >
         <div className="section-header section-header--center">
-          <p className="section-label">Carta Focus Café</p>
-          <h2 className="section-title">Café y desayunos de todos los días</h2>
+          <p className="section-label">Menú Focus Café</p>
+          <h2 className="section-title">Café, desayunos y algo dulce</h2>
           <p className="section-description">
-            Inspirado en tu menú físico, este tablero muestra una selección de
-            bebidas y platillos clave. En la versión final puedes conectar con
-            tu carta completa o plataformas de pedido.
+            Una carta pensada para acompañar cada momento del día: desde el
+            primer espresso de la mañana hasta el último antojo de la tarde.
           </p>
         </div>
 
@@ -327,17 +311,16 @@ const MenuPreviewSection: React.FC = () => {
           </div>
 
           <div className="menu-highlight-card">
-            <div className="menu-highlight-tag">Combo recomendado</div>
+            <div className="menu-highlight-tag">Recomendación del día</div>
             <h3>Cold brew y croissant de jamón</h3>
             <p>
-              Un clásico ligero para arrancar el día con energía. El cold brew
-              resalta notas de cacao y caramelo que combinan con el croissant
-              salado.
+              Un combo ligero y lleno de sabor. El cold brew resalta notas de
+              cacao y caramelo que equilibran perfecto el croissant salado.
             </p>
             <ul className="menu-highlight-list">
-              <li>Ideal para quienes vienen de paso</li>
+              <li>Ideal para arrancar la mañana sin prisas</li>
               <li>Disponible para consumir aquí o para llevar</li>
-              <li>Se puede personalizar con leches vegetales</li>
+              <li>Opción de leches vegetales y jarabes de temporada</li>
             </ul>
             <span className="menu-highlight-pill">
               Café de especialidad de Veracruz y Puebla
@@ -346,8 +329,8 @@ const MenuPreviewSection: React.FC = () => {
         </div>
 
         <p className="menu-note">
-          Todos los productos y precios son de ejemplo. En producción se
-          reemplazan con los de tu carta oficial.
+          Los productos, preparaciones y precios pueden cambiar por temporada.
+          Pregunta en barra por las novedades del día.
         </p>
       </div>
     </section>
@@ -367,11 +350,10 @@ const ExperienceSection: React.FC = () => {
       >
         <div className="section-header section-header--left">
           <p className="section-label">Experiencia Focus Café</p>
-          <h2 className="section-title">Más que una taza de café</h2>
+          <h2 className="section-title">Tu punto fijo para el café</h2>
           <p className="section-description">
-            El sitio web y el menú físico cuentan la misma historia: personajes
-            amigables, colores reconocibles y un espacio que puedes sentir
-            incluso antes de venir.
+            Focus Café es ese lugar al que regresas porque ya sabes cómo te
+            gusta el café, dónde te quieres sentar y qué vas a pedir.
           </p>
         </div>
 
@@ -380,10 +362,10 @@ const ExperienceSection: React.FC = () => {
             <div className="experience-icon">
               <img src={teteraVerde} alt="Tetera Focus Café" />
             </div>
-            <h3>Para sentarte un rato</h3>
+            <h3>Para quedarte un rato</h3>
             <p>
-              Mesas cómodas, enchufes disponibles y una barra donde puedes ver
-              cómo se prepara tu bebida.
+              Mesas cómodas, enchufes disponibles, buena luz y música a un
+              volumen que permite conversar o trabajar.
             </p>
           </div>
 
@@ -391,10 +373,10 @@ const ExperienceSection: React.FC = () => {
             <div className="experience-icon">
               <img src={cupPastel} alt="Taza Focus Café" />
             </div>
-            <h3>Para tu ritual diario</h3>
+            <h3>Para tu rutina diaria</h3>
             <p>
-              Personas que te reconocen, un café preparado a tu gusto y
-              personajes que se repiten en tazas, paredes y en este sitio.
+              Un equipo que ya conoce tu pedido, café servido a tu gusto y una
+              identidad visual que te acompaña en cada detalle.
             </p>
           </div>
 
@@ -404,8 +386,8 @@ const ExperienceSection: React.FC = () => {
             </div>
             <h3>Para llevar contigo</h3>
             <p>
-              Opciones para llevar sin perder la experiencia: vasos ilustrados,
-              mensajes breves y la misma calidad de café.
+              Opciones para llevar que mantienen la calidad del café y el toque
+              de los personajes de Focus en cada vaso.
             </p>
           </div>
         </div>
@@ -435,7 +417,7 @@ const CharactersMural: React.FC = () => {
     { src: cupVerde, alt: "Taza verde" },
     { src: cafePastel, alt: "Vaso pastel" },
     { src: teteraNegra, alt: "Tetera negra" },
-    { src: cupAnimado, alt: "Taza animada" },
+    { src: cupAnimado, alt: "Taza animada" }
   ];
 
   return (
@@ -443,11 +425,11 @@ const CharactersMural: React.FC = () => {
       <div className="section-inner" ref={ref}>
         <div className="mural-header">
           <p className="section-label">Mural Focus Café</p>
-          <h2 className="section-title">Un muro lleno de personajes</h2>
+          <h2 className="section-title">Personajes que se quedan contigo</h2>
           <p className="section-description">
-            Igual que en tu menú físico, este mural digital reúne a todas las
-            versiones de tus personajes. Aparecen uno por uno, como si se
-            fueran acomodando en la pared.
+            Los personajes de Focus aparecen en el menú, en las tazas y ahora
+            también en este mural digital. Una forma de reconocer el café antes
+            incluso de probarlo.
           </p>
         </div>
 
@@ -471,7 +453,6 @@ const CharactersMural: React.FC = () => {
   );
 };
 
-
 /* ---------- QUIÉNES SOMOS ---------- */
 
 const AboutSection: React.FC = () => {
@@ -487,54 +468,59 @@ const AboutSection: React.FC = () => {
       >
         <div className="about-text">
           <p className="section-label">Quiénes somos</p>
-          <h2 className="section-title">Un café de barrio con alma</h2>
+          <h2 className="section-title">Un café de barrio con personalidad</h2>
           <p className="section-description">
-            Focus Café nació con la idea de darle otra forma a las mañanas:
-            café de especialidad, desayunos sencillos y un espacio donde se
-            antoje quedarse. Queremos que la gente nos reconozca por el sabor y
-            por los detalles.
+            Focus Café nace de la idea de tener un lugar sencillo, honesto y
+            bien cuidado, donde lo importante es cómo te sientes cuando te
+            sirven tu café.
           </p>
 
           <ul className="about-list">
             <li>
               <span className="about-icon">A</span>
               <span>
-                <strong>Ingredientes seleccionados:</strong> uso de insumos
-                locales y opciones orgánicas siempre que es posible.
+                <strong>Ingredientes seleccionados:</strong> preferimos insumos
+                locales, productos frescos y opciones más ligeras para el día a
+                día.
               </span>
             </li>
             <li>
               <span className="about-icon">B</span>
               <span>
                 <strong>Café de especialidad:</strong> granos de Veracruz y
-                Puebla con tostados pensados para el día a día.
+                Puebla con tostados pensados para resaltar sabor, no solo
+                cafeína.
               </span>
             </li>
             <li>
               <span className="about-icon">C</span>
               <span>
-                <strong>Diseño coherente:</strong> del menú a la web, la misma
-                identidad de personajes y colores.
+                <strong>Identidad clara:</strong> personajes, colores y menú
+                cuentan la misma historia, desde la fachada hasta la web.
               </span>
             </li>
           </ul>
 
           <div className="about-tagline">
-            Hecho en León, con el ambiente de una cafetería de barrio.
+            Hecho en León, con la calidez de una cafetería de barrio.
           </div>
         </div>
 
         <div className="about-card">
-        <div className="about-label">Momento Focus</div>
+          <div className="about-label">Momento Focus</div>
 
-        <div className="about-photo-placeholder">
-          <img
-            src={focus}
-            alt="Interior de Focus Café"
-            className="about-photo-img"
-          />
+          <div className="about-photo-placeholder">
+            <img
+              src={focus}
+              alt="Interior de Focus Café"
+              className="about-photo-img"
+            />
+          </div>
+          <p>
+            Cada detalle del espacio está pensado para que tu café, tu desayuno
+            y tu tiempo aquí se sientan como una pausa necesaria en el día.
+          </p>
         </div>
-      </div>
       </div>
     </section>
   );
@@ -555,11 +541,10 @@ const ContactSection: React.FC = () => {
       >
         <div className="contact-info">
           <p className="section-label">Visítanos</p>
-          <h2 className="section-title">Agenda tu siguiente visita</h2>
+          <h2 className="section-title">Tu mesa te espera</h2>
           <p className="section-description">
-            Puedes pasar directamente, anticipar tu pedido o reservar una mesa
-            para una reunión pequeña. Estos datos se adaptan a la operación real
-            de Focus Café.
+            Pasa por tu café de camino al trabajo, quédate a desayunar o arma
+            una reunión pequeña. Escríbenos o llámanos para coordinar tu visita.
           </p>
 
           <div className="contact-block">
@@ -595,13 +580,11 @@ const ContactSection: React.FC = () => {
         <div className="contact-map">
           <div className="map-card">
             <div className="map-placeholder">
-              Aquí puedes insertar el mapa de Google Maps con la ubicación de
-              Focus Café.
+              Mapa de ubicación de Focus Café en Google Maps.
             </div>
             <p className="map-note">
-              En producción, este cuadro se reemplaza con el iframe oficial de
-              Google Maps para que las personas ubiquen tu cafetería con un
-              clic.
+              Usa el mapa interactivo para encontrar la ruta más rápida hacia
+              Focus Café y planear tu próxima visita.
             </p>
           </div>
         </div>
