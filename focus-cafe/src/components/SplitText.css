@@ -1,0 +1,22 @@
+.split-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.split--inline .split-line {
+  display: inline-block;
+  padding-bottom: 0;
+}
+
+.split-ch {
+  display: inline-block;
+  animation: split-up 0.9s var(--ease) both;
+  animation-delay: var(--d);
+}
+
+@keyframes split-up {
+  from {
+    translate: 0 105%;
+  }
+}

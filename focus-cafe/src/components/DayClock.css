@@ -1,0 +1,76 @@
+.clock {
+  position: fixed;
+  left: clamp(12px, 2vw, 24px);
+  bottom: calc(clamp(12px, 2vw, 24px) + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 8px;
+  border-radius: 99px;
+  background: var(--negro);
+  color: var(--crema);
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 10px 30px -10px rgba(20, 20, 18, 0.5);
+  opacity: 0;
+  translate: 0 20px;
+  pointer-events: none;
+  transition: opacity 0.4s, translate 0.4s, background 0.5s, color 0.5s;
+}
+
+.clock.is-on {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.clock__dial {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--lime);
+  position: relative;
+  transition: background 0.5s;
+}
+
+.clock__dial::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 11px;
+  background: var(--negro);
+  transform-origin: 50% 0;
+  rotate: var(--rot);
+  border-radius: 2px;
+  transition: rotate 0.3s var(--ease);
+}
+
+.clock__time {
+  font-family: var(--f-cartel);
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+.clock__moment {
+  color: var(--noche-2);
+  font-weight: 500;
+}
+
+.clock.is-night {
+  background: var(--lime);
+  color: var(--negro);
+}
+
+.clock.is-night .clock__dial {
+  background: var(--negro);
+}
+
+.clock.is-night .clock__dial::after {
+  background: var(--lime);
+}
+
+.clock.is-night .clock__moment {
+  color: #3c4417;
+}

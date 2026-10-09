@@ -1,0 +1,36 @@
+/* Sistema de diseño Focus Café
+   La página es un día: crema de mañana → negro de noche.
+   Tipografía-cartel como arquitectura, producto como protagonista. */
+:root {
+  /* Paleta oficial */
+  --lime: #afc556;
+  --onda: #9db641;
+  --crema: #f0f3d0;
+  --verde: #5e7a0f;
+  --negro: #141412;
+  --rojo: #e84c3d;
+
+  /* Neutros */
+  --papel: #fafaf2;
+  --tinta: var(--negro);
+  --tinta-2: #55574a;
+  --hair: rgba(20, 20, 18, 0.14);
+  --noche-2: #9a9c86;
+  --noche-hair: #2a2b25;
+
+  /* Tipografía */
+  --f-cartel: "Rubik Mono One", "Arial Black", Impact, sans-serif;
+  --f-texto: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mano: "Gochi Hand", "Comic Sans MS", cursive;
+
+  /* Movimiento */
+  --ease: cubic-bezier(0.7, 0, 0.2, 1);
+  --spring: cubic-bezier(0.34, 1.4, 0.5, 1);
+
+  /* Layout */
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1320px;
+  --header-h: 72px;
+
+  color-scheme: light;
+}

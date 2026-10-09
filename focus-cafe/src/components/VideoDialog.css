@@ -1,0 +1,68 @@
+.vdialog {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  width: min(1100px, 92vw);
+  max-width: none;
+  overflow: visible;
+}
+
+.vdialog::backdrop {
+  background: rgba(10, 10, 9, 0.84);
+  backdrop-filter: blur(6px);
+}
+
+.vdialog[open] .vdialog__frame {
+  animation: vdialog-pop 0.5s var(--spring);
+}
+
+@keyframes vdialog-pop {
+  from {
+    scale: 0.9;
+    opacity: 0;
+  }
+}
+
+.vdialog__frame {
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+
+.vdialog__frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.vdialog__empty {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: end start;
+}
+
+.vdialog__empty span {
+  margin: 20px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  background: var(--lime);
+  color: var(--negro);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.vdialog__close {
+  position: absolute;
+  right: -6px;
+  top: -56px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--crema);
+  background: transparent;
+  color: var(--crema);
+  font-size: 1.1rem;
+}

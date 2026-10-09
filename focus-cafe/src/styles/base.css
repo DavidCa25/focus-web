@@ -1,0 +1,182 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--f-texto);
+  font-size: 17px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+section[id] {
+  scroll-margin-top: var(--header-h);
+}
+
+/* Utilidades compartidas */
+.container {
+  max-width: var(--max);
+  margin-inline: auto;
+}
+
+.gutter {
+  padding-inline: var(--gutter);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-top: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 99px;
+  border: 2px solid var(--tinta);
+  background: transparent;
+  color: var(--tinta);
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.pill:hover {
+  background: var(--tinta);
+  color: var(--crema);
+}
+
+.pill--solid {
+  background: var(--tinta);
+  color: var(--crema);
+}
+
+.pill--solid:hover {
+  background: var(--verde);
+  border-color: var(--verde);
+}
+
+.hand-note {
+  font-family: var(--f-mano);
+  line-height: 1.05;
+}
+
+/* Fotos de producto que vienen recortadas de origen: se desvanecen en el borde cortado */
+.cut-left {
+  mask-image: linear-gradient(to right, transparent 0, #000 22%);
+}
+
+.cut-right {
+  mask-image: linear-gradient(to left, transparent 0, #000 22%);
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 99px;
+  background: var(--negro);
+  color: var(--crema);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes float {
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
