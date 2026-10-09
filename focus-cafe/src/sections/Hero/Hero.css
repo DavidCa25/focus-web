@@ -1,0 +1,347 @@
+.hero {
+  position: relative;
+  background: var(--crema);
+  min-height: clamp(660px, 64vw, 900px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ---------- Composición ---------- */
+.hero__art {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__sun {
+  position: absolute;
+  width: min(50vw, 680px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--lime);
+  left: 50%;
+  top: clamp(90px, 9vw, 130px);
+  translate: -50% 0;
+  z-index: -1;
+  animation: hero-rise 1.8s var(--ease) both;
+}
+
+.hero__sun::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(20, 20, 18, 0.18);
+}
+
+.hero__word {
+  position: absolute;
+  inset: auto 0 -0.9vw;
+  text-align: center;
+  font-family: var(--f-cartel);
+  font-size: 20.5vw;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  color: var(--verde);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero__word--front {
+  color: transparent;
+  -webkit-text-stroke: max(1.5px, 0.18vw) var(--negro);
+  clip-path: inset(56% 0 0 0);
+  z-index: 4;
+}
+
+.hero__ground {
+  position: absolute;
+  left: 50%;
+  bottom: 9vw;
+  width: 22vw;
+  height: 2.4vw;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(20, 20, 18, 0.28), transparent);
+  z-index: 2;
+}
+
+.hero__float {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  animation: float 7s ease-in-out 2s infinite;
+}
+
+.hero__cup {
+  position: absolute;
+  left: 50%;
+  top: clamp(70px, 7vw, 100px);
+  height: clamp(420px, 44vw, 680px);
+  width: auto;
+  max-width: none;
+  translate: -50% 0;
+  rotate: -7deg;
+  animation: hero-drop 1.6s var(--spring) 0.25s both;
+}
+
+.hero__ice {
+  position: absolute;
+  width: clamp(56px, 6vw, 92px);
+  left: 58vw;
+  top: clamp(120px, 11vw, 160px);
+  z-index: 5;
+  rotate: 12deg;
+  animation: float 5s ease-in-out infinite;
+}
+
+.hero__spark {
+  position: absolute;
+  width: clamp(40px, 4vw, 64px);
+  left: 37vw;
+  top: clamp(130px, 13vw, 180px);
+  z-index: 5;
+  rotate: -20deg;
+}
+
+.hero__note {
+  position: absolute;
+  z-index: 7;
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+  pointer-events: none;
+}
+
+.hero__note svg {
+  display: block;
+  width: clamp(60px, 6vw, 90px);
+  height: auto;
+  stroke: var(--negro);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.hero__note--a {
+  left: 30vw;
+  top: 31vw;
+  rotate: -6deg;
+}
+
+.hero__note--b {
+  right: 25vw;
+  top: 21vw;
+  rotate: 5deg;
+  text-align: right;
+}
+
+.hero__note--b svg {
+  margin-left: auto;
+  scale: -1 1;
+}
+
+/* ---------- Texto ---------- */
+.hero__copy {
+  position: absolute;
+  left: var(--gutter);
+  top: clamp(140px, 13vw, 200px);
+  width: min(30vw, 400px);
+  z-index: 6;
+}
+
+.hero__title {
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 3.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-top: 14px;
+}
+
+.hero__lede {
+  color: #3e4130;
+  margin-block: 16px 22px;
+  max-width: 30ch;
+  font-size: 1rem;
+}
+
+.hero__spec {
+  position: absolute;
+  right: var(--gutter);
+  top: clamp(140px, 13vw, 200px);
+  z-index: 6;
+  width: min(22vw, 280px);
+  border-top: 2px solid var(--tinta);
+}
+
+.hero__spec div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hair);
+  font-size: 0.9rem;
+}
+
+.hero__spec dt {
+  color: var(--tinta-2);
+}
+
+.hero__spec dd {
+  font-weight: 700;
+  text-align: right;
+}
+
+.hero__spec .hero__spec-head {
+  font-family: var(--f-cartel);
+  font-size: 0.74rem;
+  padding-top: 12px;
+}
+
+.hero__spec .hero__spec-head dt {
+  color: var(--tinta);
+}
+
+.hero__spec .hero__spec-head dd {
+  font-weight: 400;
+}
+
+@keyframes hero-rise {
+  from {
+    translate: -50% 40%;
+    scale: 0.85;
+  }
+}
+
+@keyframes hero-drop {
+  from {
+    translate: -50% -18%;
+    rotate: -16deg;
+    opacity: 0;
+  }
+}
+
+/* ---------- Móvil: el texto va arriba y la composición debajo ---------- */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 0;
+    padding-top: calc(var(--header-h) + 32px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    padding-inline: var(--gutter);
+    padding-block: 24px 48px;
+  }
+
+  .hero__art {
+    position: relative;
+    height: 122vw;
+    margin-top: 12px;
+  }
+
+  .hero__sun {
+    width: 84vw;
+    top: 4vw;
+  }
+
+  .hero__cup {
+    height: 104vw;
+    top: 0;
+  }
+
+  .hero__spec {
+    display: none;
+  }
+
+  .hero__note--a {
+    left: 4vw;
+    top: 60vw;
+  }
+
+  .hero__note--b {
+    right: 4vw;
+    top: 8vw;
+  }
+
+  .hero__ice {
+    left: 72vw;
+    top: 40vw;
+  }
+
+  .hero__spark {
+    left: 12vw;
+    top: 18vw;
+  }
+
+  .hero__ground {
+    bottom: 13vw;
+    width: 40vw;
+  }
+}
+
+/* ---------- Escritorio: la composición cabe en la altura de la ventana ----------
+   El hero mide lo que la pantalla (con límites) y todo se escala con el
+   ancho y el alto de la sección (cqw / cqh), así se ve completo en laptops comunes. */
+@media (min-width: 901px) {
+  .hero {
+    container-type: size;
+    min-height: 0;
+    height: clamp(600px, 100svh, 940px);
+  }
+
+  .hero__sun {
+    width: min(50cqw, 76cqh);
+    top: calc(var(--header-h) + 2cqh);
+  }
+
+  .hero__word {
+    font-size: min(20.5cqw, 36cqh);
+  }
+
+  .hero__word--front {
+    -webkit-text-stroke-width: max(1.5px, 0.18cqw);
+  }
+
+  .hero__cup {
+    top: calc(var(--header-h) + 1cqh);
+    height: min(44cqw, 74cqh);
+  }
+
+  .hero__ground {
+    bottom: 13cqh;
+    width: min(22cqw, 36cqh);
+    height: min(2.4cqw, 4cqh);
+  }
+
+  .hero__ice {
+    left: calc(50cqw + min(9cqw, 15cqh));
+    top: calc(var(--header-h) + 10cqh);
+  }
+
+  .hero__spark {
+    left: calc(50cqw - min(14cqw, 23cqh));
+    top: calc(var(--header-h) + 12cqh);
+  }
+
+  .hero__note--a {
+    left: calc(50cqw - min(21cqw, 34cqh));
+    top: 50cqh;
+  }
+
+  .hero__note--b {
+    right: calc(50cqw - min(25cqw, 40cqh));
+    top: 36cqh;
+  }
+
+  .hero__copy,
+  .hero__spec {
+    top: calc(var(--header-h) + 9cqh);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, min(3.6cqw, 6.6cqh), 3.3rem);
+  }
+}

@@ -1,0 +1,18 @@
+.ribbon {
+  background: var(--papel);
+  overflow: hidden;
+}
+
+.ribbon svg {
+  display: block;
+  width: 120%;
+  margin-left: -10%;
+  height: auto;
+}
+
+.ribbon text {
+  font-family: var(--f-cartel);
+  font-size: 44px;
+  fill: var(--crema);
+  letter-spacing: 1px;
+}
